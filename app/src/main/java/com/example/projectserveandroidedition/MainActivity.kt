@@ -47,11 +47,95 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    onScannerClick: () -> Unit = {},
+    onManualClick: () -> Unit = {}
+) {
+    var showManualInput by remember { mutableStateOf(false) }
+    var showScanner by remember { mutableStateOf(false) }
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.background),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = 250.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.Default.Assignment,
+                contentDescription = "Clipboard",
+                tint = Color.Yellow,
+                modifier = Modifier.size(45.dp)
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Text(
+                text = "NAPFA Test Scoring",
+                fontSize = 34.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+
+            Text(
+                text = "Record scores for all test stations",
+                fontSize = 20.sp,
+                color = Color.DarkGray
+            )
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(
+                    onClick = {
+                        showScanner = true
+                        onScannerClick()
+                    },
+                    shape = RoundedCornerShape(15.dp)
+                ) {
+                    Text("Scanner")
+                }
+
+                Button(
+                    onClick = {
+                        showManualInput = true
+                        onManualClick()
+                    },
+                    shape = RoundedCornerShape(15.dp)
+                ) {
+                    Text("Manual Input")
+                }
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+        }
+        if (showScanner) {
+            ScannerScreen(
+                onDismiss = {
+                    showScanner = false
+                }
+            )
+        }
+        if (showManualInput) {
+            ManualInputScreen(
+                onDismiss = {
+                    showManualInput = false
+                }
+            )
+        }
+    }
 }
 
 @Preview(showBackground = true)
