@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "774284477246",
+    "project_id": "napfabuddy",
+    "storage_bucket": "napfabuddy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774284477246:android:bb88ff2a9b1af9aeb7a26f",
+        "android_client_info": {
+          "package_name": "com.example.projectserveandroidedition"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCcMKnk_Jt3s9IshPSHc6SZZ04rVIfoDw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
