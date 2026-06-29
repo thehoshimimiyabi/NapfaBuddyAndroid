@@ -1,6 +1,8 @@
 package com.example.projectserveandroidedition
 
 import android.os.Bundle
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
